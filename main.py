@@ -3,37 +3,20 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 from selenium import webdriver
-import time
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from twilio.rest import Client
 import requests
 from twilio.rest import Client
 import tkinter as tk
-import time
-import time
 
+from bot import Bot
 
+'''
 def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
+
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-    '''
-    account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-    auth_token = '8407867db5c587e8cdd7ded28d9929c1'
-    client = Client(account_sid, auth_token)
 
-    message = client.messages.create(
-        from_='whatsapp:+14155238886',
-        body='Your appointment is coming up on July 21 at 3PM',
-        to='whatsapp:+8801816633106'
-    )
-
-    print(message.sid)
-    '''
-    # print("shesh")
-
-    # x = requests.get('https://nodecloths.com')
-    # print(x.text)
     #SHURU
     driver = webdriver.Chrome()
     driver.maximize_window()
@@ -66,7 +49,7 @@ def print_hi(name):
     print(len(rows))
     if len(rows) > 3:
         account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-        auth_token = '8407867db5c587e8cdd7ded28d9929c1'
+        auth_token = '6632d9f1530b0b2f49c5a7f62f0e68b0'
         client = Client(account_sid, auth_token)
         message = client.messages.create(
             from_='whatsapp:+14155238886',
@@ -90,9 +73,9 @@ def print_hi(name):
         print("only available seat " + td.text)
         convertNumber = int(td.text)
         print(convertNumber)
-        if (convertNumber > 0):
+        if convertNumber > 0:
             account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-            auth_token = '8407867db5c587e8cdd7ded28d9929c1'
+            auth_token = '6632d9f1530b0b2f49c5a7f62f0e68b0'
             client = Client(account_sid, auth_token)
 
             message = client.messages.create(
@@ -115,7 +98,7 @@ def print_hi(name):
     print(len(rows))
     if len(rows) > 7:
         account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-        auth_token = '8407867db5c587e8cdd7ded28d9929c1'
+        auth_token = '6632d9f1530b0b2f49c5a7f62f0e68b0'
         client = Client(account_sid, auth_token)
         message = client.messages.create(
             from_='whatsapp:+14155238886',
@@ -143,9 +126,9 @@ def print_hi(name):
         print("only available seat " + td.text)
         convertNumber = int(td.text)
         print(convertNumber)
-        if (convertNumber > 0):
+        if convertNumber > 0:
             account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-            auth_token = '8407867db5c587e8cdd7ded28d9929c1'
+            auth_token = '6632d9f1530b0b2f49c5a7f62f0e68b0'
             client = Client(account_sid, auth_token)
             message = client.messages.create(
                 from_='whatsapp:+14155238886',
@@ -162,24 +145,9 @@ def print_hi(name):
     # row.click()
     # time.sleep(2)
     driver.close()
-    '''
-    account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-    auth_token = '8407867db5c587e8cdd7ded28d9929c1'
-    client = Client(account_sid, auth_token)
-
-    message = client.messages.create(
-        from_='whatsapp:+14155238886',
-        body='All Scraping has finished and this a whatsapp notification ',
-        to='whatsapp:+8801816633106'
-    )
-
-    print(message.sid)
-    '''
+    
     print("shesh")
-
-
-
-
+'''
 
 import time
 import threading
@@ -192,12 +160,14 @@ time.sleep(0.5)
 
 stop = False
 label = Label(root, text="")
+
+
 def button_stop_command():
   # If the STOP button is pressed then terminate the loop
   global stop
   stop = True
   account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-  auth_token = '8407867db5c587e8cdd7ded28d9929c1'
+  auth_token = '6632d9f1530b0b2f49c5a7f62f0e68b0'
   client = Client(account_sid, auth_token)
 
   message = client.messages.create(
@@ -206,40 +176,47 @@ def button_stop_command():
       to='whatsapp:+8801816633106'
   )
   label.config(text="stopped")
-
   print(message.sid)
+
 
 def button_start_command():
   global stop
   stop = False
   j = 1
-  account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
-  auth_token = '8407867db5c587e8cdd7ded28d9929c1'
-  client = Client(account_sid, auth_token)
 
+  account_sid = 'AC4a32ce8cc378d257f6fd84c64a87c2f2'
+  auth_token = '6632d9f1530b0b2f49c5a7f62f0e68b0'
+  client = Client(account_sid, auth_token)
   message = client.messages.create(
       from_='whatsapp:+14155238886',
       body='started',
       to='whatsapp:+8801816633106'
   )
+  print(message.sid)
+
   label.config(text="started")
   label.config(text="running")
 
-  print(message.sid)
+
   while not stop:
     print("Loop Index = " + str(j))
     j = j+1
     time.sleep(3)
-    print_hi('PyCharm')
+    obj = Bot('najim')
+    obj.print_hi()
+    #print_hi("najim")
     time.sleep(10)
+
 
 def button_starter():
   t = threading.Thread(target=button_start_command)
   t.start()
 
+
 # Button START
 button_start = Button(root, text="START", padx=30, pady=20, command=button_starter)
 button_start.grid(columnspan=1, row=1,column=0)
+
 
 # Button STOP
 button_stop = Button(root, text="STOP", padx=33, pady=20, command=button_stop_command)
